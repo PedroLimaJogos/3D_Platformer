@@ -23,7 +23,6 @@ public class GunBase : MonoBehaviour
     
     public virtual void Shoot()
     {
-        Debug.Log("atirando");
         var projectile = Instantiate(prefabProjectile);
         projectile.transform.position = positionToShoot.position;
         projectile.transform.rotation = positionToShoot.rotation;
