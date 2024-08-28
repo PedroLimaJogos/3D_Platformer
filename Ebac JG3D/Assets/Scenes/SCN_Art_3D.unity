@@ -4739,8 +4739,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiGunUpdaters: []
   gunList:
-  - {fileID: 8886759141180838644, guid: 8f25c7ee5d776a143bed2517c4965d9c, type: 3}
   - {fileID: 6754407471846482714, guid: 65d766f241b472d4581d2abc41092e92, type: 3}
+  - {fileID: 8886759141180838644, guid: 8f25c7ee5d776a143bed2517c4965d9c, type: 3}
   gunBase: {fileID: 8886759141180838644, guid: 8f25c7ee5d776a143bed2517c4965d9c, type: 3}
   listGuns: []
   gunPosition: {fileID: 1213398140}
@@ -10815,7 +10815,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500100153}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27232274, y: -0.000000016556086, z: 0.0000000046856896, w: 0.962206}
+  m_LocalRotation: {x: 0.27232274, y: 0.00000001655608, z: -0.000000004685688, w: 0.962206}
   m_LocalPosition: {x: 407.3, y: 3.0500002, z: 40.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11491,7 +11491,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1577725118}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27232274, y: -0.000000016556086, z: 0.0000000046856896, w: 0.962206}
+  m_LocalRotation: {x: 0.27232274, y: 0.00000001655608, z: -0.000000004685688, w: 0.962206}
   m_LocalPosition: {x: 407.3, y: 3.0500002, z: 40.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
