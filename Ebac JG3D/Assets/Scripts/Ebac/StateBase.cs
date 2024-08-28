@@ -7,7 +7,7 @@ namespace Ebac.StateMachine
     public class StateBase : MonoBehaviour
     {
         // Start is called before the first frame update
-        public virtual void OnStateEnter(object o = null)
+        public virtual void OnStateEnter(params object[] objs)
         {
             Debug.Log("OnStateEnter");
         }
