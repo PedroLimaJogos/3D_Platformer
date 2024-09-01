@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class UIGunUpdated : MonoBehaviour
+public class UIFillUpdate : MonoBehaviour
 {
     [Header("Animation")]
     public float duration = .1f;

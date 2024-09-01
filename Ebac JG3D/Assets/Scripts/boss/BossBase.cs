@@ -20,7 +20,7 @@ namespace Boss
         [Header("Animation")]
         public float startAnimationDuration = .5f;
 
-        public HealthBase heathbase;
+        public HealthBase healthBase;
         public Ease startAnimationEase = Ease.OutBack;
 
         [Header("Attack")]
@@ -36,9 +36,14 @@ namespace Boss
 
         private StateMachine<BossAction> stateMachine;
 
+        private void OnValidate() {
+            if(healthBase == null) healthBase = GetComponent<HealthBase>();
+        }
+
         private void Awake() {
             Init();
-            heathbase.OnKill += OnBossKill;
+            OnValidate();
+            healthBase.OnKill += OnBossKill;
         }
         private void Init()
         {

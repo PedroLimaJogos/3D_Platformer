@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamageable
+public class Player : MonoBehaviour//, IDamageable
 {
     public CharacterController characterController;
      public Animator animator;
+
+     private bool _alive = true;
 
     public float speed = 1f;
     public float turnSpeed = 1f;
     public float gravity = 9.8f;
     public float jumpSpeed = 15f;
+    public List <Collider> colliders;
 
     [Header("Run Setup")]
     public KeyCode keyRun = KeyCode.LeftShift;
@@ -21,15 +24,50 @@ public class Player : MonoBehaviour, IDamageable
     [Header("Flash")]
     public List<FlashColor> flashColors;
 
+    [Header("Flash")]
+    public HealthBase healthBase;
+
+    private void OnValidate() {
+        if(healthBase == null) healthBase = GetComponent<HealthBase>();
+    }
+
+    private void Awake() {
+        OnValidate();
+
+        healthBase.OnDamage += Damage;
+        healthBase.OnKill += OnKill;
+    }
+
+    private void OnKill(HealthBase h)
+    {
+        if(_alive)
+        {
+            _alive = false;
+            animator.SetTrigger("Death");  
+            colliders.ForEach(i => i.enabled = false); 
+
+            Invoke(nameof(Revive),3f);
+        }
+    }
+
     #region LIFE
-    public void Damage(float damage)
+    public void Damage(HealthBase h)
     {
         flashColors.ForEach(i => i.Flash());
     }
 
+    private void Revive()
+    {
+        animator.SetTrigger("Revive");
+        Respawn();
+        _alive = true;
+        colliders.ForEach(i => i.enabled = true); 
+        healthBase.ResetLife();
+    }
+
     public void Damage(float damage, Vector3 dir)
     {
-        Damage(damage);
+        //Damage(damage);
     }
     #endregion
 
@@ -79,4 +117,15 @@ public class Player : MonoBehaviour, IDamageable
         
 
     }
+
+    [NaughtyAttributes.Button]
+    public void Respawn()
+    {
+        if(checkpointManager.Instance.hasCheckpoint())
+        {
+            transform.position = checkpointManager.Instance.GetPositionFromLastCheckpoint();
+        }
+    }
+
+
 }
