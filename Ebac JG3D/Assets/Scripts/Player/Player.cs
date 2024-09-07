@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Player : MonoBehaviour//, IDamageable
@@ -15,11 +16,13 @@ public class Player : MonoBehaviour//, IDamageable
     public float jumpSpeed = 15f;
     public List <Collider> colliders;
 
+
     [Header("Run Setup")]
     public KeyCode keyRun = KeyCode.LeftShift;
     public float speedRun = 1.5f;
 
     private float vSpeed = 0;
+    public List<UIFillUpdate> uiGunUpdaters;
 
     [Header("Flash")]
     public List<FlashColor> flashColors;
@@ -33,7 +36,7 @@ public class Player : MonoBehaviour//, IDamageable
 
     private void Awake() {
         OnValidate();
-
+        GetLifeUI();
         healthBase.OnDamage += Damage;
         healthBase.OnKill += OnKill;
     }
@@ -50,10 +53,29 @@ public class Player : MonoBehaviour//, IDamageable
         }
     }
 
+    private void GetLifeUI()
+    {
+        uiGunUpdaters = GameObject.FindObjectsOfType<UIFillUpdate>()
+        .Where(u => u.gameObject.name == "LifeSquare")
+        .ToList();
+    }
+    public float timeToRecharge = 1f;
+    IEnumerator rechargeCoroutine()
+    {
+        float time = 0;
+        while(time < timeToRecharge)
+        {
+            time += Time.deltaTime;
+            uiGunUpdaters.ForEach(i => i.UpdateValue(time/timeToRecharge));
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
     #region LIFE
     public void Damage(HealthBase h)
     {
         flashColors.ForEach(i => i.Flash());
+        EffectsManager.Instance.ChangeVignette();
     }
 
     private void Revive()
@@ -63,6 +85,7 @@ public class Player : MonoBehaviour//, IDamageable
         _alive = true;
         colliders.ForEach(i => i.enabled = true); 
         healthBase.ResetLife();
+        StartCoroutine(rechargeCoroutine());
     }
 
     public void Damage(float damage, Vector3 dir)
