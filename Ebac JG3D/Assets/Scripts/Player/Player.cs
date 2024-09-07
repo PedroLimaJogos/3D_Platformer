@@ -76,6 +76,8 @@ public class Player : MonoBehaviour//, IDamageable
     {
         flashColors.ForEach(i => i.Flash());
         EffectsManager.Instance.ChangeVignette();
+        Debug.Log("treme");
+        ShakeCamera.Instance.Shake();
     }
 
     private void Revive()
