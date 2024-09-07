@@ -3069,7 +3069,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &417993801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3112,8 +3112,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417993800}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.33271214, y: 0.025754629, z: -0.009077909, w: 0.94263303}
-  m_LocalPosition: {x: 406.4497, y: 6.60437, z: 28.624424}
+  m_LocalRotation: {x: 0.27232274, y: -0.000000016556081, z: 0.0000000046856887, w: 0.962206}
+  m_LocalPosition: {x: 407.3, y: 3.0500002, z: 40.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4599,8 +4599,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633359357}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27232274, y: -0.00000001532763, z: 0.000000004338014, w: 0.962206}
-  m_LocalPosition: {x: 0.7748718, y: 5.6773486, z: -18.462486}
+  m_LocalRotation: {x: -0, y: 0.98857224, z: -0.15074795, w: 1e-45}
+  m_LocalPosition: {x: 0.7748718, y: 0.47734857, z: 1.7375145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5378,6 +5378,8 @@ MonoBehaviour:
   - {fileID: 707586573}
   keyRun: 304
   speedRun: 1.5
+  uiGunUpdaters:
+  - {fileID: 0}
   flashColors:
   - {fileID: 120268622}
   - {fileID: 784444706}
@@ -5385,6 +5387,7 @@ MonoBehaviour:
   - {fileID: 1394547805}
   - {fileID: 915838211}
   healthBase: {fileID: 707586574}
+  timeToRecharge: 1
 --- !u!4 &707586571
 Transform:
   m_ObjectHideFlags: 0
@@ -11289,10 +11292,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 0
-  m_FollowOffset: {x: 0, y: 3, z: 7}
-  m_XDamping: 0.4
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_FollowOffset: {x: 0, y: 3.8, z: 7.2}
+  m_XDamping: 1
+  m_YDamping: 1.3
+  m_ZDamping: 2.1
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -12599,7 +12602,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 11
+  m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 1436430667}
   m_Follow: {fileID: 1436430667}
@@ -12630,7 +12633,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1577725118}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27232274, y: -0.00000001532763, z: 0.000000004338014, w: 0.962206}
+  m_LocalRotation: {x: 0.27232274, y: 0.000000016556085, z: -0.0000000046856896, w: 0.962206}
   m_LocalPosition: {x: 0.7748718, y: 5.6773486, z: -18.462486}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15019,7 +15022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1794729415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15038,8 +15041,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_LookAt: {fileID: 707586571}
+  m_Follow: {fileID: 707586571}
   m_AnimatedTarget: {fileID: 1436430666}
   m_LayerIndex: 0
   m_ShowDebugText: 0
@@ -15048,11 +15051,11 @@ MonoBehaviour:
   - {fileID: 633359358}
   m_Instructions:
   - m_FullHash: 1251315677
-    m_VirtualCamera: {fileID: 1577725119}
+    m_VirtualCamera: {fileID: 633359358}
     m_ActivateAfter: 0
     m_MinDuration: 0
-  - m_FullHash: 1932378568
-    m_VirtualCamera: {fileID: 1577725119}
+  - m_FullHash: 499440316
+    m_VirtualCamera: {fileID: 633359358}
     m_ActivateAfter: 0
     m_MinDuration: 0
   - m_FullHash: 306637226
