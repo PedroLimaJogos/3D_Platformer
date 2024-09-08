@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Player : MonoBehaviour//, IDamageable
+public class Player : Singleton<Player>//, IDamageable
 {
     public CharacterController characterController;
      public Animator animator;
@@ -34,13 +34,12 @@ public class Player : MonoBehaviour//, IDamageable
         if(healthBase == null) healthBase = GetComponent<HealthBase>();
     }
 
-    private void Awake() {
+    private void Start() {
         OnValidate();
         GetLifeUI();
         healthBase.OnDamage += Damage;
         healthBase.OnKill += OnKill;
     }
-
     private void OnKill(HealthBase h)
     {
         if(_alive)
