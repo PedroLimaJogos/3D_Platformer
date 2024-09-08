@@ -36,12 +36,12 @@ public class ProjectileBase : MonoBehaviour
                     dir.y = 0;
 
                     damageable.Damage(damageAmount,dir);
-                    
+                    Destroy(gameObject);
                 }
                 break;
             }
         }
-        if(collision.transform.tag != "bullet")
-            Destroy(gameObject);
+        // if(collision.transform.tag != "bullet")
+            
     }
 }
