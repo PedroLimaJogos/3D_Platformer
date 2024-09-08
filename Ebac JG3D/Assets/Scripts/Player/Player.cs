@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using Cloth;
 public class Player : Singleton<Player>//, IDamageable
 {
     public CharacterController characterController;
      public Animator animator;
 
      private bool _alive = true;
+
+    [SerializeField]private ClothChanger _clothChanger;
 
     public float speed = 1f;
     public float turnSpeed = 1f;
@@ -151,5 +153,28 @@ public class Player : Singleton<Player>//, IDamageable
         }
     }
 
+    public void ChangeSpeed(float speed, float duration)
+    {
+        StartCoroutine(ChangeSpeedCoroutine(speed,duration));
+    }
 
+    IEnumerator ChangeSpeedCoroutine(float localSpeed, float duration)
+    {
+        var defaultSpeed = speed;
+        speed = localSpeed;
+        yield return new WaitForSeconds(duration);
+        speed = defaultSpeed;
+    }
+
+    public void ChangeTexture(ClothSetup setup, float duration)
+    {
+        StartCoroutine(ChangeTextureCoroutine(setup,duration));
+    }
+
+    IEnumerator ChangeTextureCoroutine(ClothSetup setup, float duration)
+    {
+        _clothChanger.ChangeTexture(setup);
+        yield return new WaitForSeconds(duration);
+        _clothChanger.ResetTexture();
+    }
 }
