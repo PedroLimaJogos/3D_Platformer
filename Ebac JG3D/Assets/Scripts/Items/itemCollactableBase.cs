@@ -26,6 +26,7 @@ namespace Itens{
             Debug.Log("Tocou em algo");
             if (collision.transform.CompareTag(tagCompare))
             {
+                if(collider != null) collider.enabled = false;
                 Collect();
             }
         }

@@ -51,7 +51,7 @@ MonoBehaviour:
   itemType: 0
   tagCompare: Player
   particleSystem: {fileID: 0}
-  collider: {fileID: 9088480720542028164}
+  collider: {fileID: 2372843551941467894}
   timeToHide: 3
   graphicItem: {fileID: 4972771705410375885}
   audioSource: {fileID: 0}
