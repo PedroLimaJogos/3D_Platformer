@@ -13303,6 +13303,79 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6712895257379582637, guid: bcab836cef6dc7c4f81683bcd8f114b3, type: 3}
   m_PrefabInstance: {fileID: 1485540195}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1488400674
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3543653718956930010, guid: 88c403cad507a8346aa0c4516471c6c2, type: 3}
+      propertyPath: m_Name
+      value: PFB_SaveManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144617655298560283, guid: 88c403cad507a8346aa0c4516471c6c2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 372.92368
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144617655298560283, guid: 88c403cad507a8346aa0c4516471c6c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 201.7495
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144617655298560283, guid: 88c403cad507a8346aa0c4516471c6c2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 104.570526
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144617655298560283, guid: 88c403cad507a8346aa0c4516471c6c2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144617655298560283, guid: 88c403cad507a8346aa0c4516471c6c2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144617655298560283, guid: 88c403cad507a8346aa0c4516471c6c2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144617655298560283, guid: 88c403cad507a8346aa0c4516471c6c2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144617655298560283, guid: 88c403cad507a8346aa0c4516471c6c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144617655298560283, guid: 88c403cad507a8346aa0c4516471c6c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144617655298560283, guid: 88c403cad507a8346aa0c4516471c6c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054062402061669716, guid: 88c403cad507a8346aa0c4516471c6c2, type: 3}
+      propertyPath: _saveSetup.coins
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054062402061669716, guid: 88c403cad507a8346aa0c4516471c6c2, type: 3}
+      propertyPath: _saveSetup.health
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054062402061669716, guid: 88c403cad507a8346aa0c4516471c6c2, type: 3}
+      propertyPath: _saveSetup.lastLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054062402061669716, guid: 88c403cad507a8346aa0c4516471c6c2, type: 3}
+      propertyPath: _saveSetup.playerName
+      value: Rafael
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 88c403cad507a8346aa0c4516471c6c2, type: 3}
 --- !u!1 &1500100153
 GameObject:
   m_ObjectHideFlags: 0
@@ -19020,7 +19093,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1577725118}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27232274, y: -0.000000016556081, z: 0.0000000046856887, w: 0.962206}
+  m_LocalRotation: {x: 0.27232274, y: 0.000000016556085, z: -0.0000000046856896, w: 0.962206}
   m_LocalPosition: {x: 0.7748718, y: 5.6773486, z: -18.462486}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23545,7 +23618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clothSetups:
   - clothType: 0
-    text: {fileID: 2800000, guid: c97d46f9aec8cdc4cba7c5a41a756fec, type: 3}
+    text: {fileID: 2800000, guid: 0d4af6a2c201403418355714b0ceb9cb, type: 3}
   - clothType: 1
     text: {fileID: 2800000, guid: 25d78890b1e9fad428285008fd3283a9, type: 3}
 --- !u!4 &1996660935
@@ -36837,3 +36910,4 @@ SceneRoots:
   - {fileID: 1346408124}
   - {fileID: 1548740602}
   - {fileID: 205160384345330866}
+  - {fileID: 1488400674}

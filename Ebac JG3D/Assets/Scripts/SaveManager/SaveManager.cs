@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,15 +7,39 @@ using Unity.VisualScripting;
 
 public class SaveManager : Singleton<SaveManager>
 {
-    private SaveSetup _saveSetup;
+    [SerializeField]private SaveSetup _saveSetup;
+    private string _path = Application.streamingAssetsPath + "/save.txt";
+
+    public int lastLevel;
+
+    public Action<SaveSetup> FileLoaded;
+
+    public SaveSetup Setup
+    {
+        get { return _saveSetup; }
+    }
 
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void CreateNewSave()
+    {
         _saveSetup = new SaveSetup();
-        _saveSetup.lastLevel = 2;
+        _saveSetup.lastCheckpoint = 0;
         _saveSetup.playerName = "Rafael";
+    }
+
+    private void Start() {
+        Invoke(nameof(Load),.1f);
+    }
+
+    public void ChangeCheckpoint(int checkpointIndex)
+    {
+        _saveSetup.lastCheckpoint = checkpointIndex;
+        Save();
     }
 
     #region SAVE
@@ -26,6 +51,13 @@ public class SaveManager : Singleton<SaveManager>
         SaveFile(setupToJson);
     }
 
+    public void SaveItems()
+    {
+        _saveSetup.coins = Itens.itemManager.Instance.GetItemByType(Itens.ItemType.COIN).soInt.value;
+        _saveSetup.health = Itens.itemManager.Instance.GetItemByType(Itens.ItemType.LIFE_PACK).soInt.value;
+        Save();
+    }
+
     public void SaveName(string text)
     {
         _saveSetup.playerName = text;
@@ -34,20 +66,44 @@ public class SaveManager : Singleton<SaveManager>
 
     public void SaveLastLevel(int level)
     {
-        _saveSetup.lastLevel = level;
+        _saveSetup.lastCheckpoint = level;
+        SaveItems();
         Save();
     }
     #endregion
 
-    
+    private void LoadFile(int lastCheckpoint)
+    {
+        CheckPointData.Instance.salvaIndex(lastCheckpoint);
+    }
 
     private void SaveFile(string json)
     {
-        string path = Application.persistentDataPath + "/save.txt";
-
-        Debug.Log(path);
-        File.WriteAllText(path,json);
+        Debug.Log(_path);
+        File.WriteAllText(_path,json);
     }
+    [NaughtyAttributes.Button]
+    private void Load()
+    {
+        string fileLoaded = "";
+
+        if(File.Exists(_path))
+        {
+            fileLoaded = File.ReadAllText(_path);
+            _saveSetup = JsonUtility.FromJson<SaveSetup>(fileLoaded);
+            lastLevel = _saveSetup.lastCheckpoint;
+
+            LoadFile(lastLevel);
+
+        }
+        else
+        {
+            CreateNewSave();
+            Save();
+        }
+        FileLoaded.Invoke(_saveSetup);
+    }
+
     [NaughtyAttributes.Button]
     private void SaveLevelOne()
     {
@@ -59,6 +115,8 @@ public class SaveManager : Singleton<SaveManager>
 
 public class SaveSetup
 {
-    public int lastLevel;
+    public int lastCheckpoint;
+    public float coins;
+    public float health;
     public string playerName;
 }

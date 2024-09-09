@@ -41,6 +41,14 @@ public class Player : Singleton<Player>//, IDamageable
         GetLifeUI();
         healthBase.OnDamage += Damage;
         healthBase.OnKill += OnKill;
+
+        int dados = CheckPointData.Instance.retornaIndex();
+        if(dados > 0)
+        {
+            Debug.Log("revivendo");
+            Revive();
+            Respawn();
+        }
     }
     private void OnKill(HealthBase h)
     {
@@ -139,9 +147,6 @@ public class Player : Singleton<Player>//, IDamageable
             {
                 animator.SetBool("run", false);
             }
-    
-        
-
     }
 
     [NaughtyAttributes.Button]

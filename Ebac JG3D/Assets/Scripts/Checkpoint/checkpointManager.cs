@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -29,6 +30,8 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void Awake()
     {
+        
+
         if (_instance == null)
         {
             _instance = this as T;
@@ -58,6 +61,23 @@ public class checkpointManager : Singleton<checkpointManager>
         
     }
 
+    protected override void Awake() {
+        int dados = CheckPointData.Instance.retornaIndex();
+        if(dados > 0)
+        {
+            lastCheckpointKey = dados;
+            Debug.Log(lastCheckpointKey);
+
+            foreach (var checkpoint in checkpoints)
+            {
+                if (checkpoint.key <= dados)
+                {
+                    checkpoint.TurnItOn(); // Ativa o checkpoint (visual ou funcionalmente)
+                }
+            }
+        }
+    }
+
     // Save the latest checkpoint
     public void SaveCheckPoint(int i)
     {
@@ -72,5 +92,10 @@ public class checkpointManager : Singleton<checkpointManager>
     {
         var checkpoint = checkpoints.Find(i => i.key == lastCheckpointKey);
         return checkpoint.transform.position;
+    }
+
+    public void LoadCheckpoint(int lastCheckpoint)
+    {
+        lastCheckpointKey = lastCheckpoint;
     }
 }
