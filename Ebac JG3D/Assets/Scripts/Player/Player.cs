@@ -17,6 +17,8 @@ public class Player : Singleton<Player>//, IDamageable
     public float gravity = 9.8f;
     public float jumpSpeed = 15f;
     public List <Collider> colliders;
+    public SFXType sFXType;
+    public AudioSource audioSource;
 
 
     [Header("Run Setup")]
@@ -50,6 +52,12 @@ public class Player : Singleton<Player>//, IDamageable
             Respawn();
         }
     }
+
+    private void PlaySFX()
+    {
+        SFXPool.Instance.Play(sFXType);
+    }
+
     private void OnKill(HealthBase h)
     {
         if(_alive)
@@ -83,6 +91,7 @@ public class Player : Singleton<Player>//, IDamageable
     #region LIFE
     public void Damage(HealthBase h)
     {
+        PlaySFX();
         flashColors.ForEach(i => i.Flash());
         EffectsManager.Instance.ChangeVignette();
         Debug.Log("treme");

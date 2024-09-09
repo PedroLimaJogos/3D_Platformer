@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerAbilityShoot : PlayerAbilityBase
 {
-
+    public SFXType sFXType;
+    public AudioSource audioSource;
     public List<UIFillUpdate> uiGunUpdaters;
     public List<GunBase> gunList;
 
@@ -15,6 +16,11 @@ public class PlayerAbilityShoot : PlayerAbilityBase
 
     private GunBase _currentGun;
     public FlashColor _flashColor;
+
+    private void PlaySFX()
+    {
+        SFXPool.Instance.Play(sFXType);
+    }
 
     protected override void Init()
     {
@@ -53,6 +59,7 @@ public class PlayerAbilityShoot : PlayerAbilityBase
 
     private void Shoot()
     {
+        PlaySFX();
         _currentGun.StartShoot();
         _flashColor?.Flash();
     }

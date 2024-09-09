@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Itens{
     public class itemCollactableBase : MonoBehaviour
     {
-        // Start is called before the first frame update
+        public SFXType sFXType;
         public ItemType itemType;
         public string tagCompare = "Player";
         public ParticleSystem particleSystem;
@@ -29,8 +29,15 @@ namespace Itens{
                 Collect();
             }
         }
+
+        private void PlaySFX()
+        {
+            SFXPool.Instance.Play(sFXType);
+        }
+
         protected virtual void Collect()
         {
+            PlaySFX();
             if(collider != null) collider.enabled = false;
             if (graphicItem != null) graphicItem.SetActive(false);
             Invoke(nameof(HideObject), timeToHide);
