@@ -7,6 +7,9 @@ public class CheckpointBase : MonoBehaviour
     public MeshRenderer meshRenderer;
     public int key = 01;
 
+    [Header("Sounds")]
+        public SFXType sFXType;
+
     private bool checkpointActive = false;
     private string checkpointKey = "CheckpointKey";
     private void OnTriggerEnter(Collider other) {
@@ -25,6 +28,7 @@ public class CheckpointBase : MonoBehaviour
     [NaughtyAttributes.Button]
     public void TurnItOn()
     {
+        SFXPool.Instance.Play(sFXType);
         meshRenderer.material.SetColor("_EmissionColor",Color.green);
         SaveManager.Instance.ChangeCheckpoint(key);
 
